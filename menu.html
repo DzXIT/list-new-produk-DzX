@@ -1,0 +1,793 @@
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DzXNewEra • Premium Gaming Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #4A00E0;
+            --accent: #00D2FF;
+            --dark: #0A0A1A;
+            --darker: #050510;
+            --light: #F0F0FF;
+            --text: #E6E6FF;
+            --card-bg: rgba(20, 20, 40, 0.7);
+            --card-border: rgba(138, 43, 226, 0.3);
+            --glow: 0 0 25px rgba(138, 43, 226, 0.4);
+            --text-glow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.4;
+        }
+
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 5, 16, 0.95) 0%, rgba(10, 10, 30, 0.9) 50%, rgba(15, 15, 45, 0.85) 100%);
+            z-index: -1;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(138, 43, 226, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 25px 50px;
+            border-radius: 80px;
+            box-shadow: var(--glow), 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.8s;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo-container:hover::before {
+            left: 100%;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 25px var(--primary);
+            border: 2px solid var(--accent);
+            position: relative;
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(10deg) scale(1.05);
+            box-shadow: 0 0 30px var(--accent);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-glow);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        .verified {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-left: 10px;
+            text-shadow: 0 0 15px var(--accent);
+            position: relative;
+            top: -5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Intro Section */
+        .intro {
+            text-align: center;
+            max-width: 950px;
+            margin: 0 auto 70px;
+            padding: 50px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .intro h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .intro p {
+            line-height: 1.8;
+            font-size: 1.3rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Products Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 35px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(138, 43, 226, 0.3);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-glow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-price {
+            font-size: 1.7rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), #00FFAA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            background-color: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+
+        .product-description {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            color: var(--light);
+        }
+
+        .benefits {
+            margin-top: 30px;
+        }
+
+        .benefits h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefits h3 i {
+            font-size: 1.3rem;
+        }
+
+        .benefits ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .benefits li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .benefits li:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding-left: 45px;
+        }
+
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 210, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .benefits li:hover:before {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            margin: 60px 0;
+            padding: 50px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .cta p {
+            font-size: 1.4rem;
+            margin-bottom: 35px;
+            line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .buy-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.8s;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.7);
+        }
+
+        .buy-button:hover::before {
+            left: 100%;
+        }
+
+        .buy-button i {
+            font-size: 1.6rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 70px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(138, 43, 226, 0.2);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .floating:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            animation-duration: 25s;
+        }
+
+        .floating:nth-child(2) {
+            top: 70%;
+            left: 80%;
+            width: 80px;
+            height: 80px;
+            animation-duration: 30s;
+        }
+
+        .floating:nth-child(3) {
+            top: 40%;
+            left: 85%;
+            width: 60px;
+            height: 60px;
+            animation-duration: 20s;
+        }
+
+        .floating:nth-child(4) {
+            top: 80%;
+            left: 15%;
+            width: 70px;
+            height: 70px;
+            animation-duration: 35s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .products {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+                border-radius: 40px;
+            }
+            
+            .brand-name {
+                font-size: 2.2rem;
+            }
+            
+            .intro, .cta {
+                padding: 40px 25px;
+            }
+            
+            .intro h2 {
+                font-size: 1.8rem;
+            }
+            
+            .product-name {
+                font-size: 1.6rem;
+            }
+            
+            .product-card {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                padding: 25px;
+            }
+            
+            .brand-name {
+                font-size: 1.8rem;
+            }
+            
+            .intro h2 {
+                font-size: 1.5rem;
+            }
+            
+            .product-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .buy-button {
+                padding: 18px 35px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--accent), var(--primary));
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="https://raw.githubusercontent.com/NdikzDatabase/Database/main/Database/1761320448926-egl7zq.mp4" type="video/mp4">
+    </video>
+    <div class="gradient-overlay"></div>
+    
+    <!-- Particles Background -->
+    <div class="particles" id="particles-container"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container animate">
+                <div class="logo">
+                    <img src="https://c.termai.cc/i72/VIQelK.jpg" alt="DzXNewEra Logo">
+                </div>
+                <h1 class="brand-name">DzXNewEra <span class="verified"><i class="fas fa-badge-check"></i></span></h1>
+            </div>
+        </header>
+
+        <section class="intro animate delay-1">
+            <h2><i class="fas fa-hand-sparkles"></i> Haii, Bosen beli file mahal-mahal tapi gimick doang dan tidak berfungsi?</h2>
+            <p>Admin menawarkan beberapa produk berkualitas premium yang sudah teruji 100% work. Rasakan pengalaman gaming yang berbeda dengan produk eksklusif kami!</p>
+        </section>
+
+        <section class="products">
+            <div class="product-card animate delay-1">
+                <div class="product-header">
+                    <h2 class="product-name"><i class="fas fa-bullseye-arrow"></i> DragShoot AimX</h2>
+                    <div class="product-price">Rp 30K</div>
+                </div>
+                <p class="product-description">Teknologi drag shoot revolusioner dengan presisi tingkat tinggi untuk pengalaman gaming yang tak tertandingi.</p>
+                <div class="benefits">
+                    <h3><i class="fas fa-crown"></i> Benefit Eksklusif</h3>
+                    <ul>
+                        <li>DragLock target - sistem pengunci target dengan akurasi maksimal</li>
+                        <li>Stability aim - stabilisasi aim yang ultra smooth tanpa lag</li>
+                        <li>Smooth aimX - pergerakan aim yang halus dan responsif</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="product-card animate delay-2">
+                <div class="product-header">
+                    <h2 class="product-name"><i class="fas fa-robot"></i> App Zixro V1</h2>
+                    <div class="product-price">Rp 50K</div>
+                </div>
+                <p class="product-description">Aplikasi premium dengan teknologi AI canggih untuk meningkatkan performa gaming Anda secara signifikan.</p>
+                <div class="benefits">
+                    <h3><i class="fas fa-crown"></i> Benefit Eksklusif</h3>
+                    <ul>
+                        <li>Headtrick 46% - peningkatan akurasi headshot secara dramatis</li>
+                        <li>Aim Tracking 26% - sistem pelacakan target otomatis yang cerdas</li>
+                        <li>Aim stability 37% - stabilitas aim yang konsisten dalam segala kondisi</li>
+                        <li>Aim assist 30% - bantuan aim yang presisi dan natural</li>
+                        <li>Rog Resolution - peningkatan resolusi grafis hingga 4K</li>
+                        <li>Rog monitoring - monitoring performa real-time dengan statistik detail</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta animate delay-3">
+            <p><i class="fas fa-gem"></i> Yuk beli produk buatan kami dan rasakan perbedaannya, pasti lebih puas dan meningkatkan skill gaming Anda! 🤗</p>
+            <a href="https://wa.me/6287879846906?text=Halo%20DzXNewEra,%20saya%20tertarik%20dengan%20produk%20Anda" class="buy-button" target="_blank">
+                <i class="fab fa-whatsapp"></i> Beli Sekarang
+            </a>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 DzXNewEra. All rights reserved. • Premium Quality Gaming Products</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create particles background
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 20 + 5;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 30 + 20;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles
+        createParticles();
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Apply animations to elements
+        document.querySelectorAll('.product-card, .intro, .cta').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Typing effect for intro text
+        const introText = "Haii, Bosen beli file mahal-mahal tapi gimick doang dan tidak berfungsi?";
+        const introElement = document.querySelector('.intro h2');
+        
+        if (introElement) {
+            let i = 0;
+            const typeWriter = () => {
+                if (i < introText.length) {
+                    introElement.innerHTML = '<i class="fas fa-hand-sparkles"></i> ' + introText.substring(0, i+1);
+                    i++;
+                    setTimeout(typeWriter, 40);
+                }
+            };
+            
+            // Start typing effect after delay
+            setTimeout(typeWriter, 800);
+        }
+
+        // Add hover effect to product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
